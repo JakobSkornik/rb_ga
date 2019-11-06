@@ -1,0 +1,1 @@
+normalize <- function(div, number) { return(number / div) }
