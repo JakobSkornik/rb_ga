@@ -2,9 +2,9 @@ source('rosenbrock.R')
 
 x <- seq(from = -1, to =  1, by = 0.1)
 y <- x
-z <- matrix(0, 20, 20)
+z <- outer(x, y, rosenbrock)
 
-persp(x, y, z = outer(x, y, rosenbrock),
+persp(x, y, z,
       xlab = 'x',
       ylab = 'y',
       zlab = 'z',
