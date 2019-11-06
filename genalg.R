@@ -1,4 +1,4 @@
-genalg <- function(pop_size, stop, parental_presence, generation_survivability, alpha, lower_bound, upper_bound) {
+genalg <- function(pop_size, stop, parental_presence, generation_survivability, alpha, lower_bound, upper_bound, extended) {
   
   #source functions
   source('addResult.R')
@@ -7,6 +7,7 @@ genalg <- function(pop_size, stop, parental_presence, generation_survivability, 
   source('calculate_fitnes.R')
   source('selection.R')
   source('mutation.R')
+  source('visualize.R')
   
   conditions <- input(pop_size, stop, parental_presence, generation_survivability, alpha, lower_bound, upper_bound)
   
@@ -91,11 +92,11 @@ genalg <- function(pop_size, stop, parental_presence, generation_survivability, 
                              mean(population[,3]))
     
     result_extensive<- addResult(result_extensive, 
-                                 generation, 
-                                 population[,3], 
-                                 population[,1], 
-                                 population[,2], 
-                                 mean(population[,3]))
+                             generation, 
+                             population[,3], 
+                             population[,1], 
+                             population[,2], 
+                             mean(population[,3]))
     
     #if the result doesnt change for 'stop' number of generations, the while loop stops
     if (isTRUE(all.equal(population[1,3], previous, tolerance = 0.00001)))
@@ -108,5 +109,10 @@ genalg <- function(pop_size, stop, parental_presence, generation_survivability, 
     }
   }
   
-  return(result_extensive)
+  
+  
+  if (extended == 1)
+    return(result_extensive)
+  
+  return(result)
 }
