@@ -6,8 +6,12 @@ genalg <- function(pop_size, stop, parental_presence, generation_survivability, 
   source('create_population.R')
   source('calculate_fitnes.R')
   source('selection.R')
-  source('mutation.R')
   source('visualize.R')
+  
+  #select preferred mutation type
+  #source('crossover.R')
+  #source('crossover_2.R')
+  source('mutation.R')
   
   conditions <- input(pop_size, stop, parental_presence, generation_survivability, alpha, lower_bound, upper_bound)
   

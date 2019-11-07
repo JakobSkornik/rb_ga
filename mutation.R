@@ -1,22 +1,17 @@
-mutation <- function(parents, parental_persistence, ap) {
+mutation <- function(parents, parental_presence, ap) {
   
   offspring <- parents[FALSE,]
   
-  for (i in 1:parental_persistence) {
+  for (i in 1:(parental_presence / 2)) {
+      
+    a <- parents[i,]$x
+    b <- parents[i,]$y
     
-    if (i %% 2 == 0) {
-      
-      a <- parents[i - 1,]$x
-      b <- parents[i - 1,]$y
-      c <- parents[i,]$x
-      d <- parents[i,]$y
-      
-      x <- a*ap + (1 - ap) * c
-      y <- b*ap + (1 - ap) * d
-      fitness <- 0
-      kid <- data.frame(x, y, fitness)
-      offspring <- rbind(offspring, kid)
-    }
+    x <- a*runif(1, a - ap/2, a + ap/2)
+    y <- b*runif(1, b - ap/2, b + ap/2)
+    fitness <- 0
+    kid <- data.frame(x, y, fitness)
+    offspring <- rbind(offspring, kid)
   }
   
   return(offspring)
