@@ -1,4 +1,4 @@
-mutation <- function(parents, parental_presence, ap) {
+mutation <- function(parents, parental_presence, ap, lower_bound, upper_bound) {
   
   offspring <- parents[FALSE,]
   
@@ -7,7 +7,6 @@ mutation <- function(parents, parental_presence, ap) {
     if (i %% 2 == 0) {
       
       R <- sample(1:2, 1)
-      
       x <- parents[i + 1 - R,]$x
       y <- parents[i + 1 - R,]$y
       fitness <- 0

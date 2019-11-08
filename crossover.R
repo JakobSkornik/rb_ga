@@ -1,4 +1,4 @@
-mutation <- function(parents, parental_presence, ap) {
+mutation <- function(parents, parental_presence, ap, lower_bound, upper_bound) {
   
   offspring <- parents[FALSE,]
   
@@ -14,8 +14,12 @@ mutation <- function(parents, parental_presence, ap) {
       x <- a*ap + (1 - ap) * c
       y <- b*ap + (1 - ap) * d
       fitness <- 0
-      kid <- data.frame(x, y, fitness)
-      offspring <- rbind(offspring, kid)
+      
+      if(check_bounds(lower_bound, upper_bound, x) & check_bounds(lower_bound, upper_bound, y)){
+        
+        kid <- data.frame(x, y, fitness)
+        offspring <- rbind(offspring, kid)
+      }
     }
   }
   

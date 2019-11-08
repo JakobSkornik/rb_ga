@@ -1,4 +1,4 @@
-input <- function (pop_size, stop, parental_presence, generation_survivability, alpha, lower_bound, upper_bound) {
+input <- function (pop_size, stop, parental_presence, generation_survivability, alpha, lower_bound, upper_bound, crossover) {
   
   if (parental_presence > pop_size)
     return('Population size smaller than parental presence!')
